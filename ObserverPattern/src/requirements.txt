@@ -1,0 +1,4 @@
+1. Observer Pattern -> Multiple subscriber would be notified of any change in the Publisher class
+2. Publisher class will have list of all subscriber
+3. Subscriber can subscriber to a publisher or unsubscribe to a publisher
+
