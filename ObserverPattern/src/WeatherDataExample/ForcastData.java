@@ -1,4 +1,6 @@
-public class DisplayData implements Observer{
+package WeatherDataExample;
+
+public class ForcastData implements Observer{
     private float humidity;
     private float airquality;
     private float temperature;
@@ -11,6 +13,6 @@ public class DisplayData implements Observer{
     }
 
     private void display() {
-        System.out.println("Temperature: "+temperature +" Humidity: "+humidity+" AirQuality: "+airquality);
+        System.out.println("Tomorrow' Data: Temperature: "+2*temperature +" Humidity: "+1.5*humidity+" AirQuality: "+.5*airquality);
     }
 }

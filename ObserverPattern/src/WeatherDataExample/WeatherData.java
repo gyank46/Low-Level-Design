@@ -1,3 +1,5 @@
+package WeatherDataExample;
+
 import java.util.ArrayList;
 import java.util.List;
 

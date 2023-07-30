@@ -1,3 +1,5 @@
+package WeatherDataExample;
+
 public class Statistics implements Observer{
     private float humidity;
     private float airquality;
