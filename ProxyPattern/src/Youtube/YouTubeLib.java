@@ -1,3 +1,5 @@
+package Youtube;
+
 public interface YouTubeLib {
 
     public void listVideos();

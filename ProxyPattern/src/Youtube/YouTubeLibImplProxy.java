@@ -1,25 +1,23 @@
-public class YouTubeLibImplProxy implements YouTubeLib{
-    private YouTubeLib youTubeLib;
+package Youtube;
 
-    public YouTubeLibImplProxy(YouTubeLib youTubeLib) {
-        this.youTubeLib = youTubeLib;
-    }
+public class YouTubeLibImplProxy implements YouTubeLib{
+
 
     @Override
     public void listVideos() {
         // do some checks or modify Data
-        youTubeLib.listVideos();
+        new YouTubeLibImpl().listVideos();
     }
 
     @Override
     public void getVideoInfo(String id) {
         // do some action and then if needed call youtubelib
-        youTubeLib.getVideoInfo(id);
+        new YouTubeLibImpl().getVideoInfo(id);
     }
 
     @Override
     public void downloadVideo(String id) {
         // do some action and then if needed call youtubelib
-        youTubeLib.downloadVideo(id);
+        new YouTubeLibImpl().downloadVideo(id);
     }
 }
