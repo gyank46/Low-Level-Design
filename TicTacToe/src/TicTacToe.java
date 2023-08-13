@@ -1,11 +1,14 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Stack;
 
 public class TicTacToe {
     public Scanner scanner = new Scanner(System.in);
     private List<User> players = new ArrayList<>();
     private Board board;
+
+    private Stack<Cell> cellStack = new Stack<>();
 
     public boolean isGameOver = false;
 
@@ -28,12 +31,27 @@ public class TicTacToe {
 
     public void makeBotMove(User user){
         Cell cell = user.makeMove(board);
+        cellStack.push(cell);
         board.fillCell(cell);
     }
 
     public boolean makeHumanMove(User user,int r, int c){
+        boolean result;
         Cell cell =  new Cell(r,c,user.symbol);
-        return board.fillCell(cell);
+        result =  board.fillCell(cell);
+        if(result)
+            cellStack.push(cell);
+        return result;
+    }
+
+    public void undo(){
+        if(cellStack.isEmpty()){
+            System.out.println("Nothing to Undo.");
+            return;
+        }
+        Cell cell = cellStack.pop();
+        board.undo(cell);
+        turns--;
     }
 
     public void play(){

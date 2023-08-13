@@ -21,4 +21,7 @@ public class Board {
         return true;
     }
 
+    public void undo(Cell cell) {
+        boardCells[cell.r][cell.c] = null;
+    }
 }
