@@ -10,8 +10,9 @@ public class Board {
     public boolean fillCell(Cell cell){
         if(cell.r>=boardCells.length || cell.c >= boardCells.length){
             System.out.println("Not a valid cell. ");
+            return false;
         }
-        if(this.boardCells[cell.r][cell.c].symbol!=null){
+        if(this.boardCells[cell.r][cell.c]!=null){
             System.out.println("Not a valid move. Space already occupied.");
             return false;
         }
