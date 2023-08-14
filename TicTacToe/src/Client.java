@@ -28,8 +28,6 @@ public class Client {
         while (!ticTacToe.isGameOver){
             ticTacToe.play();
         }
-
-
     }
 
 }
