@@ -13,4 +13,8 @@ public class RectangularBoardCell {
         this.cellType = cellType;
     }
 
+    public int next(){
+        return y;
+    }
+
 }
