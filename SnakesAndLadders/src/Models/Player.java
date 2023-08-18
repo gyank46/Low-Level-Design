@@ -1,5 +1,7 @@
+package Models;
+
 public class Player {
-//    private User user;
+//    private Models.User user;
     private String name;
     private String emailId;
     private String phoneNumber;
