@@ -12,6 +12,8 @@ public class ParkingLot {
 
     EntryGateChoosingStrategy entryGateChoosingStrategy;
     ExitGateChoosingStrategy exitGateChoosingStrategy;
+    List<EntryGateChangeObserver> entryGateChangeObservers;
+    List<ExitGateChangeObserver> exitGateChangeObservers;
 
     DisplayBoard displayBoard;
     int capacity;
@@ -26,10 +28,16 @@ public class ParkingLot {
 
     void addEntryGate(EntryGate entryGate){
         entryGates.add(entryGate);
+        for(EntryGateChangeObserver entryGateChangeObserver:entryGateChangeObservers){
+            entryGateChangeObserver.updateEntryGateCounts(entryGates.size());
+        }
     }
 
     void addExitGate(ExitGate exitGate){
         exitGates.add(exitGate);
+        for(ExitGateChangeObserver exitGateChangeObserver:exitGateChangeObservers){
+            exitGateChangeObserver.updateEntryGateCounts(exitGates.size());
+        }
     }
 
     Ticket parkVehicle(Vehicle vehicle){

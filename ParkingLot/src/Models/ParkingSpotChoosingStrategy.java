@@ -1,5 +1,5 @@
 package Models;
 
 public interface ParkingSpotChoosingStrategy {
-    ParkingSpot getParkingSpot(Vehicle vehicle);
+    ParkingSpot getParkingSpot(VehicleType vehicleType);
 }

@@ -1,6 +1,6 @@
 package Models;
 
-public class RoundRobinEntryGateChoosingStrategy implements EntryGateChoosingStrategy{
+public class RoundRobinEntryGateChoosingStrategy implements EntryGateChoosingStrategy,EntryGateChangeObserver{
     int totalGateCount;
     int turn;
     @Override
@@ -12,5 +12,10 @@ public class RoundRobinEntryGateChoosingStrategy implements EntryGateChoosingStr
     RoundRobinEntryGateChoosingStrategy(int totalGateCount){
         this.totalGateCount = totalGateCount;
         turn = -1;
+    }
+
+    @Override
+    public void updateEntryGateCounts(int entryGateCount) {
+        this.totalGateCount = entryGateCount;
     }
 }
