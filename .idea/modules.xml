@@ -11,6 +11,7 @@
       <module fileurl="file://$PROJECT_DIR$/LLD.iml" filepath="$PROJECT_DIR$/LLD.iml" />
       <module fileurl="file://$PROJECT_DIR$/ObserverPattern/ObserverPattern.iml" filepath="$PROJECT_DIR$/ObserverPattern/ObserverPattern.iml" />
       <module fileurl="file://$PROJECT_DIR$/ParkingLot/ParkingLot.iml" filepath="$PROJECT_DIR$/ParkingLot/ParkingLot.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ParkingLot2.0/ParkingLot2.0.iml" filepath="$PROJECT_DIR$/ParkingLot2.0/ParkingLot2.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/Pen/Pen.iml" filepath="$PROJECT_DIR$/Pen/Pen.iml" />
       <module fileurl="file://$PROJECT_DIR$/Pen2.0/Pen2.0.iml" filepath="$PROJECT_DIR$/Pen2.0/Pen2.0.iml" />
       <module fileurl="file://$PROJECT_DIR$/PrototypePattern/PrototypePattern.iml" filepath="$PROJECT_DIR$/PrototypePattern/PrototypePattern.iml" />
