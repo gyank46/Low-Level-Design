@@ -1,6 +1,9 @@
 package Models;
 
-public class RoundRobinExitGateChoosingStrategy implements ExitGateChoosingStrategy,ExitGateChangeObserver{
+import Interfaces.ExitGateChangeObserver;
+import Interfaces.ExitGateChoosingStrategy;
+
+public class RoundRobinExitGateChoosingStrategy implements ExitGateChoosingStrategy, ExitGateChangeObserver {
     int totalGateCount;
     int turn;
     @Override
@@ -15,7 +18,7 @@ public class RoundRobinExitGateChoosingStrategy implements ExitGateChoosingStrat
     }
 
     @Override
-    public void updateEntryGateCounts(int gateCount) {
+    public void updateEntryGateCount(int gateCount) {
         this.totalGateCount = gateCount;
     }
 }

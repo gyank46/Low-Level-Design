@@ -4,12 +4,12 @@ import java.time.LocalTime;
 
 public class Ticket {
     String vehicleNumber;
-    String parkingSpotId;
+    ParkingSpot parkingSpot;
     LocalTime entryTime;
     double amountPaid;
 
-    public Ticket(String vehicleNumber,String parkingSpotId){
-        this.parkingSpotId = parkingSpotId;
+    public Ticket(String vehicleNumber,ParkingSpot parkingSpot){
+        this.parkingSpot = parkingSpot;
         this.vehicleNumber = vehicleNumber;
         amountPaid = 0;
         entryTime = LocalTime.now();

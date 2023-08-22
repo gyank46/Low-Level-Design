@@ -1,6 +1,9 @@
 package Models;
 
-public class ElectricPanel implements Payee{
+import Interfaces.Payee;
+import Interfaces.PaymentMode;
+
+public class ElectricPanel implements Payee {
     PaymentMode paymentMode;
     @Override
     public void makePayment(double amount) {
@@ -8,6 +11,6 @@ public class ElectricPanel implements Payee{
     }
 
     public void chargeVehicle(){
-
+        System.out.println("Charging vehicle via electric panel!!");
     }
 }

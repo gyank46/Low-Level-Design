@@ -1,9 +1,8 @@
 package Models;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import Interfaces.*;
+
+import java.util.*;
 
 public class ParkingLot {
     List<ParkingLotFloor> parkingLotFloors = new ArrayList<>();
@@ -12,56 +11,78 @@ public class ParkingLot {
 
     EntryGateChoosingStrategy entryGateChoosingStrategy;
     ExitGateChoosingStrategy exitGateChoosingStrategy;
-    List<EntryGateChangeObserver> entryGateChangeObservers;
-    List<ExitGateChangeObserver> exitGateChangeObservers;
+    List<EntryGateChangeObserver> entryGateChangeObservers = new ArrayList<>();
+    List<ExitGateChangeObserver> exitGateChangeObservers = new ArrayList<>();
+
+    List<ParkingLotFloorChangeObserver> parkingLotFloorChangeObservers = new ArrayList<>();
 
     DisplayBoard displayBoard;
     int capacity;
 
-    ParkingLot(int capacity){
+    public ParkingLot(int capacity){
         this.capacity = capacity;
     }
 
-    void addParkingLotFloor(ParkingLotFloor parkingLotFloor){
-        parkingLotFloors.add(parkingLotFloor);
-    }
-
-    void addEntryGate(EntryGate entryGate){
+    public void addEntryGate(EntryGate entryGate){
         entryGates.add(entryGate);
         for(EntryGateChangeObserver entryGateChangeObserver:entryGateChangeObservers){
-            entryGateChangeObserver.updateEntryGateCounts(entryGates.size());
+            entryGateChangeObserver.updateEntryGateCount(entryGates.size());
         }
     }
 
-    void addExitGate(ExitGate exitGate){
+    public void addExitGate(ExitGate exitGate){
         exitGates.add(exitGate);
         for(ExitGateChangeObserver exitGateChangeObserver:exitGateChangeObservers){
-            exitGateChangeObserver.updateEntryGateCounts(exitGates.size());
+            exitGateChangeObserver.updateEntryGateCount(exitGates.size());
         }
     }
 
-    Ticket parkVehicle(Vehicle vehicle){
+    public void addParkingLotFloor(ParkingLotFloor parkingLotFloor){
+        this.parkingLotFloors.add(parkingLotFloor);
+        for(ParkingLotFloorChangeObserver parkingLotFloorChangeObserver: parkingLotFloorChangeObservers){
+            parkingLotFloorChangeObserver.addParkingLotFloor(parkingLotFloor);
+        }
+    }
+
+    public void removeParkingLotFloor(ParkingLotFloor parkingLotFloor){
+        this.parkingLotFloors.remove(parkingLotFloor);
+        for(ParkingLotFloorChangeObserver parkingLotFloorChangeObserver: parkingLotFloorChangeObservers){
+            parkingLotFloorChangeObserver.removeParkingLotFloor(parkingLotFloor);
+        }
+    }
+
+    public Ticket parkVehicle(Vehicle vehicle){
         EntryGate entryGate = entryGates.get(entryGateChoosingStrategy.getEntryGate());
         return entryGate.getTicket(vehicle);
     }
 
-    void unParkVehicle(Vehicle vehicle){
-        ExitGate exitGate = exitGates.get(exitGateChoosingStrategy.getExitGate());
-        exitGate.makePayment(null);
+    public void addEntryGateChangeObserver(EntryGateChoosingStrategy entryGateChoosingStrategy){
+        entryGateChangeObservers.add((EntryGateChangeObserver) entryGateChoosingStrategy);
     }
 
-    void displayAvailableSpots(Vehicle vehicle){
+    public void addExitGateChangeObserver(ExitGateChoosingStrategy exitGateChoosingStrategy){
+        exitGateChangeObservers.add((ExitGateChangeObserver) exitGateChoosingStrategy);
+    }
+
+    public void addParkingLotChangeObserver(ParkingSpotChoosingStrategy parkingSpotChoosingStrategy){
+        parkingLotFloorChangeObservers.add((ParkingLotFloorChangeObserver) parkingSpotChoosingStrategy);
+    }
+
+    public void unParkVehicle(Vehicle vehicle,Ticket ticket){
+        ExitGate exitGate = exitGates.get(exitGateChoosingStrategy.getExitGate());
+        if(!Objects.equals(ticket.vehicleNumber, vehicle.vehicleNumber)){
+            throw new RuntimeException("Vehicle Number not matching with vehicle number of ticket");
+        }
+        exitGate.makePayment(ticket);
+    }
+
+    public void displayAvailableSpots(){
         HashMap<ParkingSpotSize,Integer> parkingSpotSizeCountMap = new HashMap<>();
         for(ParkingLotFloor parkingLotFloor: parkingLotFloors){
-            List<ParkingSpot> parkingSpots = parkingLotFloor.availableParkingSpots;
-            for(ParkingSpot parkingSpot: parkingSpots){
-                int currentCount = parkingSpotSizeCountMap.get(parkingSpot.parkingSpotSize);
-                parkingSpotSizeCountMap.put(parkingSpot.parkingSpotSize,currentCount+1);
-            }
+            List<ParkingSpot> parkingSpots = parkingLotFloor.parkingSpots;
+            displayBoard.displayStatus(parkingSpots);
         }
-        for (Map.Entry<ParkingSpotSize, Integer> entry : parkingSpotSizeCountMap.entrySet()) {
-            System.out.println(entry.getKey() + " = " + entry.getValue());
-        }
+
     }
 
 }

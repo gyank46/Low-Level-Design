@@ -10,7 +10,9 @@ public class DisplayBoard {
         HashMap<ParkingSpotSize,Integer> parkingSpotSizeCountMap = new HashMap<>();
         for(ParkingSpot parkingSpot: parkingSpots){
             int currentCount = parkingSpotSizeCountMap.get(parkingSpot.parkingSpotSize);
-            parkingSpotSizeCountMap.put(parkingSpot.parkingSpotSize,currentCount+1);
+            if(parkingSpot.parkingSpotStatus==ParkingSpotStatus.AVAILABLE){
+                parkingSpotSizeCountMap.put(parkingSpot.parkingSpotSize,currentCount+1);
+            }
         }
         for (Map.Entry<ParkingSpotSize, Integer> entry : parkingSpotSizeCountMap.entrySet()) {
             System.out.println(entry.getKey() + " = " + entry.getValue());

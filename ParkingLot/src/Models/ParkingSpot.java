@@ -5,6 +5,11 @@ public class ParkingSpot {
     ParkingSpotSize parkingSpotSize;
     String parkingSpotId;
 
+    public ParkingSpot(ParkingSpotStatus parkingSpotStatus, ParkingSpotSize parkingSpotSize) {
+        this.parkingSpotStatus = parkingSpotStatus;
+        this.parkingSpotSize = parkingSpotSize;
+    }
+
     public ParkingSpotStatus getParkingSpotStatus() {
         return parkingSpotStatus;
     }
