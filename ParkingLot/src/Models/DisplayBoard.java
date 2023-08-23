@@ -1,4 +1,7 @@
 package Models;
 
-public class DisplayBoard {
+public class DisplayBoard extends BaseModel{
+    long displayBoardId;
+
+
 }
