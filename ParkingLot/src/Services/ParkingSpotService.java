@@ -9,6 +9,7 @@ import Repositories.ParkingSpotRepository;
 public class ParkingSpotService {
     public void updateParkingSpotStatus(long parkingSpotId, ParkingSpotStatus parkingSpotStatus){
         ParkingSpot parkingSpot = ParkingSpotRepository.getParkingSpot(parkingSpotId);
+        parkingSpot.setParkingSpotStatus(parkingSpotStatus);
         ParkingSpotRepository.updateParkingSpot(parkingSpotId,parkingSpot);
     }
 

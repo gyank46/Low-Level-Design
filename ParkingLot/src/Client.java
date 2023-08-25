@@ -3,11 +3,12 @@ import Controllers.ParkingLotFloorController;
 import Controllers.ParkingSpotController;
 import Models.*;
 import Services.*;
+import Strategies.PerHourParkingFeeCalculationStrategy;
 import Strategies.RandomParkingSpotAllocationStrategy;
 
 public class Client {
     public static void main(String[] args) {
-        ParkingLotController parkingLotController = new ParkingLotController(new ParkingLotService(),new EntryGateService(new RandomParkingSpotAllocationStrategy()),new ExitGateService());
+        ParkingLotController parkingLotController = new ParkingLotController(new ParkingLotService(),new EntryGateService(new RandomParkingSpotAllocationStrategy()),new ExitGateService(new PerHourParkingFeeCalculationStrategy()),new DisplayBoardService());
         ParkingLotFloorController parkingLotFloorController = new ParkingLotFloorController(new ParkingLotFloorService());
 
         ParkingLot parkingLot = parkingLotController.createParkingLot(100,"Jehanabad");
@@ -23,7 +24,12 @@ public class Client {
         }
 
         Vehicle vehicle = new Vehicle("ABCD",VehicleType.SMALL);
+        Vehicle vehicle1 = new Vehicle("ABCDE",VehicleType.MEDIUM);
         Ticket ticket = parkingLotController.parkVehicleToParkingLot(vehicle,parkingLot.getParkingLotId());
+
         System.out.println(ticket);
+        parkingLotController.displayParkingLotStatus(parkingLot.getParkingLotId());
+        ticket = parkingLotController.parkVehicleToParkingLot(vehicle1,parkingLot.getParkingLotId());
+        parkingLotController.displayParkingLotStatus(parkingLot.getParkingLotId());
     }
 }
