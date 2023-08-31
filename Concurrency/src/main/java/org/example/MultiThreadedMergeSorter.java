@@ -7,11 +7,11 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
-public class MergeSorter implements Callable<List<Integer>> {
+public class MultiThreadedMergeSorter implements Callable<List<Integer>> {
 
     List<Integer> list;
 
-    public MergeSorter(List<Integer> list){
+    public MultiThreadedMergeSorter(List<Integer> list){
         this.list = list;
     }
 
@@ -39,9 +39,9 @@ public class MergeSorter implements Callable<List<Integer>> {
         }
 
         ExecutorService leftExecutorService = Executors.newSingleThreadExecutor();
-        Future<List<Integer>> futureLeftSortedList = leftExecutorService.submit(new MergeSorter(leftList));
+        Future<List<Integer>> futureLeftSortedList = leftExecutorService.submit(new MultiThreadedMergeSorter(leftList));
         ExecutorService rightExecutorService = Executors.newSingleThreadExecutor();
-        Future<List<Integer>> futureRightSortedList = rightExecutorService.submit(new MergeSorter(rightList));
+        Future<List<Integer>> futureRightSortedList = rightExecutorService.submit(new MultiThreadedMergeSorter(rightList));
 
         List<Integer> leftSortedList = futureLeftSortedList.get();
         List<Integer> rightSortedList = futureRightSortedList.get();
