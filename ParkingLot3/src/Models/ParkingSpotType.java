@@ -1,2 +1,7 @@
-package Models;public enum ParkingSpotType {
+package Models;
+
+public enum ParkingSpotType {
+    CAR,
+    BIKE,
+    TRUCK,
 }

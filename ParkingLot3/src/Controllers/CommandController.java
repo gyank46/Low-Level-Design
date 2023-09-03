@@ -1,2 +1,4 @@
-package Controllers;public class CommandController {
+package Controllers;
+
+public class CommandController {
 }
