@@ -25,6 +25,16 @@ public class ParkingLotService {
             ParkingLotFloor parkingLotFloor = parkingLotFloorService.createParkingLotFloor(parkingLotFloorId,noOfSpotsPerFloor);
             parkingLot.getParkingLotFloors().add(parkingLotFloor);
         }
+        System.out.println("created parking lot with parking lot id: "+parkingLotId);
         return parkingLotRepository.saveParkingLot(parkingLot);
+    }
+
+    public void deleteParkingLot(String parkingLotId) {
+        ParkingLot parkingLot = parkingLotRepository.getParkingLotById(parkingLotId);
+        for(ParkingLotFloor parkingLotFloor:parkingLot.getParkingLotFloors()){
+            parkingLotFloorService.deleteParkingLotFloor(parkingLotFloor.getFloorNumber());
+        }
+        parkingLotRepository.removeParkingLotById(parkingLotId);
+        System.out.println("Deleted parking lot with parking lot id: "+parkingLotId);
     }
 }

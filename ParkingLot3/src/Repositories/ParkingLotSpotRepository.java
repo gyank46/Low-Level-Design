@@ -18,4 +18,8 @@ public class ParkingLotSpotRepository {
         this.parkingLotSpotRepository.put(parkingLotSpot.getParkingSpotNumber(),parkingLotSpot);
         return parkingLotSpot;
     }
+
+    public void removeParkingLotSpotById(Long parkingSpotNumber) {
+        this.parkingLotSpotRepository.remove(parkingSpotNumber);
+    }
 }

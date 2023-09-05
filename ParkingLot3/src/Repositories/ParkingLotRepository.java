@@ -16,4 +16,12 @@ public class ParkingLotRepository {
         parkingLotRepository.put(parkingLot.getParkingLotId(),parkingLot);
         return parkingLot;
     }
+
+    public ParkingLot getParkingLotById(String parkingLotId) {
+        return parkingLotRepository.get(parkingLotId);
+    }
+
+    public void removeParkingLotById(String parkingLotId) {
+        this.parkingLotRepository.remove(parkingLotId);
+    }
 }

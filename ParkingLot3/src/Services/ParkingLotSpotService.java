@@ -20,4 +20,8 @@ public class ParkingLotSpotService {
         parkingLotSpot.setParkingSpotType(parkingSpotType);
         return parkingLotSpotRepository.saveParkingLotSpot(parkingLotSpot);
     }
+
+    public void deleteParkingLotSpot(ParkingLotSpot parkingLotSpot) {
+        parkingLotSpotRepository.removeParkingLotSpotById(parkingLotSpot.getParkingSpotNumber());
+    }
 }

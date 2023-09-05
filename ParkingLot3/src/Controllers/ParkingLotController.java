@@ -13,7 +13,10 @@ public class ParkingLotController {
 
     public ParkingLot createParkingLot(String parkingLotId, String address, Long noOfFloor, Long noOfSpotsPerFloor){
         return parkingLotService.createParkingLot(parkingLotId,address,noOfFloor,noOfSpotsPerFloor);
+    }
 
+    public void deleteParkingLot(String parkingLotId){
+        parkingLotService.deleteParkingLot(parkingLotId);
     }
 
 }

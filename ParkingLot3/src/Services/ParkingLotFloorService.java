@@ -34,4 +34,12 @@ public class ParkingLotFloorService {
         }
         return parkingLotFloorRepository.saveParkingLotFloor(parkingLotFloor);
     }
+
+    public void deleteParkingLotFloor(Long floorNumber) {
+        ParkingLotFloor parkingLotFloor = parkingLotFloorRepository.getParkingLotFloorById(floorNumber);
+        for(ParkingLotSpot parkingLotSpot: parkingLotFloor.getParkingLotSpots()){
+            parkingLotSpotService.deleteParkingLotSpot(parkingLotSpot);
+        }
+        parkingLotFloorRepository.removeParkingLotFloorById(parkingLotFloor.getFloorNumber());
+    }
 }

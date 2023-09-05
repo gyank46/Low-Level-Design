@@ -18,4 +18,12 @@ public class ParkingLotFloorRepository {
         this.parkingLotFloorRepository.put(parkingLotFloor.getFloorNumber(),parkingLotFloor);
         return parkingLotFloor;
     }
+
+    public ParkingLotFloor getParkingLotFloorById(Long floorNumber) {
+        return this.parkingLotFloorRepository.get(floorNumber);
+    }
+
+    public void removeParkingLotFloorById(Long floorNumber) {
+        this.parkingLotFloorRepository.remove(floorNumber);
+    }
 }

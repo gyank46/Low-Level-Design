@@ -22,7 +22,20 @@ public class Main {
 
         ParkingLotController parkingLotController = new ParkingLotController(parkingLotService);
 
-        ParkingLot parkingLot = parkingLotController.createParkingLot("PR1234_2_5","Jehanabad",2L,5L);
+        ParkingLot parkingLot = parkingLotController.createParkingLot("PR1234_2_5","Jehanabad",2L,3L);
+        for(ParkingLot parkingLot1:parkingLotRepository.getParkingLotRepository().values()){
+            System.out.println(parkingLot1);
+        }
+
+        for(ParkingLotFloor parkingLotFloor1:parkingLotFloorRepository.getParkingLotFloorRepository().values()){
+            System.out.println(parkingLotFloor1);
+        }
+
+        for (ParkingLotSpot parkingLotSpot1:parkingLotSpotRepository.getParkingLotSpotRepository().values()){
+            System.out.println(parkingLotSpot1);
+        }
+        parkingLotController.deleteParkingLot(parkingLot.getParkingLotId());
+
         for(ParkingLot parkingLot1:parkingLotRepository.getParkingLotRepository().values()){
             System.out.println(parkingLot1);
         }
