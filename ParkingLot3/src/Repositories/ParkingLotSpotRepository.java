@@ -22,4 +22,8 @@ public class ParkingLotSpotRepository {
     public void removeParkingLotSpotById(Long parkingSpotNumber) {
         this.parkingLotSpotRepository.remove(parkingSpotNumber);
     }
+
+    public ParkingLotSpot getParkingLotSpotById(Long parkingLotSpotNumber) {
+        return parkingLotSpotRepository.get(parkingLotSpotNumber);
+    }
 }
