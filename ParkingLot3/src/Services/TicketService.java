@@ -1,6 +1,7 @@
 package Services;
 
 import Models.Ticket;
+import Repositories.TicketRepository;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -12,15 +13,15 @@ import java.util.HashMap;
 @AllArgsConstructor
 public class TicketService {
 
-    HashMap<String,Ticket> ticketRepository = new HashMap<>();
+    TicketRepository ticketRepository;
 
 
     public Ticket createTicket(String parkingLotId, Long floorNumber, Long parkingSpotNumber) {
         Ticket ticket = new Ticket(parkingLotId,floorNumber,parkingSpotNumber);
-        return ticketRepository.put(ticket.getId(),ticket);
+        return ticketRepository.saveTicket(ticket);
     }
 
     public Ticket getTicketById(String ticketId) {
-        return ticketRepository.get(ticketId);
+        return ticketRepository.getTicket(ticketId);
     }
 }

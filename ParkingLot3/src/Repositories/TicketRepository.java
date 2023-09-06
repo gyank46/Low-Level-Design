@@ -12,4 +12,10 @@ public class TicketRepository {
         ticketRepository.put(ticket.getId(),ticket);
         return ticket;
     }
+
+    public Ticket getTicket(String ticketId) {
+        return ticketRepository.get(ticketId);
+    }
+
+
 }

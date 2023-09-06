@@ -40,6 +40,7 @@ public class ParkingLotController {
     public void unParkVehicleWithTicketId(String ticketId){
         try{
             parkingLotService.unParkVehicleWithTicketId(ticketId);
+            System.out.println("Vehicle unparked.");
         }catch (InvalidTicketException e){
             System.out.println(e.getMessage());
         }
