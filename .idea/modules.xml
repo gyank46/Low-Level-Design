@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/AdapterPattern/AdapterPattern.iml" filepath="$PROJECT_DIR$/AdapterPattern/AdapterPattern.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BookMyShow/BookMyShow.iml" filepath="$PROJECT_DIR$/BookMyShow/BookMyShow.iml" />
       <module fileurl="file://$PROJECT_DIR$/BuilderPattern/BuilderPattern.iml" filepath="$PROJECT_DIR$/BuilderPattern/BuilderPattern.iml" />
       <module fileurl="file://$PROJECT_DIR$/CommandPattern/CommandPattern.iml" filepath="$PROJECT_DIR$/CommandPattern/CommandPattern.iml" />
       <module fileurl="file://$PROJECT_DIR$/Concurrency/Concurrency.iml" filepath="$PROJECT_DIR$/Concurrency/Concurrency.iml" />
